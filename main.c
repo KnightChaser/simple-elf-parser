@@ -10,13 +10,13 @@
 
 int main(int argc, char **argv) {
     if (argc < 2) {
-        fprintf(stderr, "Usage: %s <elf-file>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <elf-file-path>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
     int fd = open(argv[1], O_RDONLY);
     if (fd < 0) {
-        perror("open");
+        fprintf(stderr, "Failed to open the file\n");
         exit(EXIT_FAILURE);
     }
 
