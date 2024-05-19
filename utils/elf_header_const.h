@@ -1,6 +1,6 @@
 /**
  * @file utils/elf_header_const.h
- * @brief Header files of constants(numerical value - stringified meaningful constant) for the ELF header.
+ * @brief A header file of constants(numerical value - stringified meaningful constant) for the ELF header.
  */
 //
 

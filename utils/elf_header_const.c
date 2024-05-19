@@ -1,6 +1,7 @@
 /**
  * @file utils/elf_header_const.c
  * @brief Convert numerical values to stringified meaningful constants for the ELF header.
+ *        Just watching numbers as constants is not intuitive, so this file provides a way to convert them to meaningful constants.
  */
 //
 
