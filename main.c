@@ -1,3 +1,10 @@
+/**
+ * @file main.c
+ * @brief Main source file for the ELF(Executable and Linkable Format) parser.
+ *        Program entrypoint.
+ */
+//
+
 #include "utils/elf_utils.h"
 
 int main(int argc, char **argv) {
@@ -13,8 +20,11 @@ int main(int argc, char **argv) {
     }
 
     printf("[+] Analyzing ELF file: %s\n", argv[1]);
+
+    // header
     Elf64_Ehdr ehdr;
     read_elf_header(fd, &ehdr);
+    printf("[*] ELF header:\n");
     print_elf_header(&ehdr);
 
     close(fd);

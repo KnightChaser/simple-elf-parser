@@ -2,8 +2,10 @@
  * @file utils/elf_utils.c
  * @brief A source file for the ELF(Executable and Linkable Format) parser.
  */
+//
 
 #include "elf_utils.h"
+#include "elf_header_const.h"
 
 void read_elf_header(int fd, Elf64_Ehdr *ehdr) {
     
@@ -38,13 +40,13 @@ void print_elf_header(const Elf64_Ehdr *ehdr) {
         printf("%02x ", ehdr->e_ident[index]);
 
     printf("\n");
-    printf("  Class:                             %d\n", ehdr->e_ident[EI_CLASS]);
-    printf("  Data:                              %d\n", ehdr->e_ident[EI_DATA]);
-    printf("  Version:                           %d\n", ehdr->e_ident[EI_VERSION]);
-    printf("  OS/ABI:                            %d\n", ehdr->e_ident[EI_OSABI]);
+    printf("  Class:                             %d (%s)\n", ehdr->e_ident[EI_CLASS], get_const_str_EI_CLASS(ehdr->e_ident[EI_CLASS]));
+    printf("  Data:                              %d (%s)\n", ehdr->e_ident[EI_DATA], get_const_str_EI_DATA(ehdr->e_ident[EI_DATA]));
+    printf("  Version:                           %d (%s)\n", ehdr->e_ident[EI_VERSION], get_const_str_EI_VERSION(ehdr->e_ident[EI_VERSION]));
+    printf("  OS/ABI:                            %d (%s)\n", ehdr->e_ident[EI_OSABI], get_const_str_EI_OSABI(ehdr->e_ident[EI_OSABI]));
     printf("  ABI Version:                       %d\n", ehdr->e_ident[EI_ABIVERSION]);
-    printf("  Type:                              %d\n", ehdr->e_type);
-    printf("  Machine:                           %d\n", ehdr->e_machine);
+    printf("  Type:                              %d (%s)\n", ehdr->e_type, get_const_str_E_TYPE(ehdr->e_type));
+    printf("  Machine:                           %d (%s)\n", ehdr->e_machine, get_const_str_E_MACHINE(ehdr->e_machine));
     printf("  Version:                           0x%x\n", ehdr->e_version);
     printf("  Entry point address:               0x%lx\n", ehdr->e_entry);
     printf("  Start of program headers:          %ld (bytes into file)\n", ehdr->e_phoff);
